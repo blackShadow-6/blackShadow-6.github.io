@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>做什么？</title>
+</head>
+<style>
+    /* 页面整体颜色 */
+    body {
+        background-color: mediumturquoise;
+    }
+
+    /* 使 "做什么" 居中显示 */
+    .center_top {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /*大盒子*/
+    .square {
+        position: relative;
+        margin: auto;
+        /* 顶部距离 */
+        /* margin-top: 100px; */
+        background-color: coral;
+        width: 560px;
+        height: 560px;
+        border-radius: 5%;
+
+    }
+
+    /*小方格样式*/
+    .box {
+        background-color: white;
+        width: 145px;
+        height: 145px;
+        border-radius: 10%;
+        margin-left: 22px;
+        margin-top: 22px;
+        float: left;
+        border: 5px solid transparent;
+    }
+
+    /*中间按钮样式*/
+    .center-button {
+        background-color: aqua;
+        width: 152px;
+        height: 152px;
+        border-radius: 10%;
+        margin-left: 22px;
+        margin-top: 22px;
+        float: left;
+        font-size: 30px;
+        font-family: "monospace";
+        /* 使鼠标移入时出现小手图标 */
+        cursor: pointer;
+    }
+
+    /*小图片样式*/
+    img {
+        width: 80px;
+        height: 80px;
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+
+    /*奖品文本样式*/
+    .prize-text {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    /* 鼠标放在盒子上变大 */
+    .box:hover {
+        /* 放大1.5倍 */
+        transform: scale(1.5);
+        transition: transform 0.3s ease-in-out;
+    }
+</style>
+<script>
+    let button;
+
+    window.onload = init;
+
+    function init() {
+        // 获取开始按键
+        button = document.getElementById('center-button');
+
+        button.onclick = get_prize;
+    }
+
+    // 抽奖函数
+    function get_prize() {
+
+
+        for (let i = 1; i <= 8; i++) {
+            clean_up(i);
+        }
+
+        // 奖品数组
+        let prize = ['听音乐', '思考', '睡觉', 'game', 'reading', 'learn', '运动', '发呆'];
+        // 随机生成数字1-8
+        let a = Math.floor((Math.random() * 8) + 1);
+
+
+        // 点击开始后开做一个循环动画
+
+        // function changeAndCleanUp(k) {
+        //     if (k == 1) {
+        //         change(k);
+        //         clean_up(8);
+        //     } else {
+        //         change(k);
+        //         clean_up(k - 1);
+        //     }
+        // }
+
+        //IIFE是立即执行函数表达式，全称为Immediately-invoked function expression
+        // function setDelayedExecution(i) {
+        //     setTimeout(function (k) {
+        //         return function () {
+        //             changeAndCleanUp(k);
+        //         };
+        //     }(i), 100 * i);
+        // }
+
+        // for (let i = 1; i <= 8; i++) {
+        //     setDelayedExecution(i);
+        // }
+
+
+        // for (let i = 1; i <= 8; i++) {
+        //     setTimeout(function (k) {
+        //         return function () {
+        //             if (k == 1) {
+        //                 change(k);
+        //                 clean_up(8);
+        //             } else {
+        //                 change(k);
+        //                 clean_up(k - 1);
+        //             }
+        //         };
+        //     }(i), 100 * i);
+        // }
+
+        for (let i = 1; i <= 8; i++) {
+            // JS中=>是箭头函数，是ES6标准中新增的一种新的函数
+            setTimeout(() => {
+                if (i == 1) {
+                    change(i);
+                    clean_up(8);
+                } else {
+                    change(i);
+                    clean_up(i - 1);
+                }
+            }, 100 * i);
+        }
+
+        // 随机生成奖品
+        setTimeout(function () {
+            clean_up(8);
+            change(a);
+            console.log(prize[a - 1]);
+        }, 100 * 8 + 1);
+
+        // 弹框
+        setTimeout(function () {
+            alert('选中' + '       ' + '‘' + prize[a - 1] + '’');
+        }, 100 * 8 + 200);
+    }
+
+    // 小方格边框为玫红色
+    function change(prize_num) {
+        let square = document.getElementById('square' + prize_num);
+        square.style.border = '5px solid mediumvioletred';
+    }
+
+    // 小方格边框颜色调回为透明
+    function clean_up(prize_num) {
+        let square = document.getElementById('square' + prize_num);
+        square.style.border = '5px solid transparent';
+    }
+
+</script>
+
+<body>
+    <p class="center_top">做什么？</p>
+
+    <div class="square" id="boxs">
+        <div class="box" id="square1"><img src="./image/1.jpg">
+            <p class="prize-text">音乐</p>
+        </div>
+        <div class="box" id="square2"><img src="./image/2.jpg">
+            <p class="prize-text">思考</p>
+        </div>
+        <div class="box" id="square3"><img src="./image/3.jpg">
+            <p class="prize-text">睡觉</p>
+        </div>
+        <div class="box" id="square4"><img src="./image/4.jpg">
+            <p class="prize-text">game </p>
+        </div>
+        <button class="center-button" id="center-button">开始抽取</button>
+        <div class="box" id="square5"><img src="./image/5.jpg">
+            <p class="prize-text">reading </p>
+        </div>
+        <div class="box" id="square6"><img src="./image/6.jpg">
+            <p class="prize-text">learn</p>
+        </div>
+        <div class="box" id="square7"><img src="./image/7.jpg">
+            <p class="prize-text">运动</p>
+        </div>
+        <div class="box" id="square8"><img src="./image/8.jpg">
+            <p class="prize-text">发呆</p>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
