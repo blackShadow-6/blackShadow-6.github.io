@@ -1090,15 +1090,59 @@
  -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        background-color: aqua;
+    }
+
+    p {
+        font-size: 100px;
+        margin: auto;
+        text-align: center;
+        /* 文字不可选中 */
+        user-select: none;
+    }
+
+    /*返回按键*/
+    .btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: mediumturquoise;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        background-color: turquoise;
+    }
+</style>
+<script>
+    //返回上一个界面
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
 <body>
     <p>优化中</p>
     <br>
     <p>时间未定</p>
+    <button class="btn" onclick="goBack()">返回首页</button>
 </body>
+
 </html>
  
