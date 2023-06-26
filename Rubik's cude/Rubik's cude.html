@@ -40,6 +40,27 @@
         transform: translate(-100%, -100%);
         background-color: aquamarine;
     }
+
+    /*返回按键*/
+    .btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: mediumturquoise;
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        background-color: turquoise;
+    }
 </style>
 
 <script>
@@ -1047,6 +1068,10 @@
         angle_finalrotate = 0;
         main_func();
     }
+    //返回上一个界面
+    function goBack() {
+        window.history.back();
+    }
 </script>
 
 <body>
@@ -1058,6 +1083,7 @@
     <script>
         main_func();
     </script>
+    <button class="btn" onclick="goBack()">返回首页</button>
 </body>
 
 </html>
