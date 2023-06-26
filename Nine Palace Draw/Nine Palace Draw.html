@@ -81,6 +81,27 @@
         transform: scale(1.5);
         transition: transform 0.3s ease-in-out;
     }
+
+    /*返回按键*/
+    .btn {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: mediumturquoise;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        background-color: turquoise;
+    }
 </style>
 <script>
     let button;
@@ -185,6 +206,10 @@
         let square = document.getElementById('square' + prize_num);
         square.style.border = '5px solid transparent';
     }
+    //返回上一个界面
+    function goBack() {
+        window.history.back();
+    }
 
 </script>
 
@@ -218,7 +243,7 @@
             <p class="prize-text">发呆</p>
         </div>
     </div>
-
+    <button class="btn" onclick="goBack()">返回</button>
 </body>
 
 
