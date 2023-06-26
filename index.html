@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>影</title>
     <style>
         body {
             background-color: aqua;
@@ -49,19 +49,14 @@
         }
 
         .thanks {
-            position: fixed;
-            left: 0;
-            right: 0;
+            /* 添加这段以将文字置于底部并调整上下间隔 */
+            position: absolute;
             bottom: 0;
-            background-color: white;
-            text-align: center;
-            padding: 10px 0;
-            user-select: none;
-            /* 添加这行以防止文字被选中 */
-            resize: vertical;
-            /* 添加这行以启用垂直调整大小 */
-            overflow: auto;
-            /* 添加这行以允许内容超出容器时出现滚动条 */
+            margin-bottom: 5px;
+        }
+
+        .thanks p {
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -81,13 +76,12 @@
         <p class="center">进化中···</p>
     </div>
     <div class="button-container">
-        <!-- <a href="./Nine Palace Draw/Nine Palace Draw.html">test</a> -->
         <button onclick="redirectToNinePalaceDraw()">做什么？</button>
         <button onclick="redirectToRubikscude()">魔方</button>
     </div>
     <div class="thanks">
         <p>感谢你们的陪伴！</p>
-        
+        <p>杰，巫，婷，付</p>
     </div>
 </body>
 
